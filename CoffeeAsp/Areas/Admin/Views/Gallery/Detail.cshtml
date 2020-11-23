@@ -1,0 +1,12 @@
+﻿@model Gallery
+@{
+    ViewData["Title"] = "Detail";
+    ViewData["activeTab"] = "Gallery";
+}
+
+<dl>
+    <dt>Current Image</dt>
+    <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+</dl>
+<a href="/Admin/Gallery/Index" class="w-100 btn btn-lg btn-block btn-danger">Back</a>
+

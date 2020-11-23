@@ -1,0 +1,313 @@
+﻿@model HomeIndexVM
+@{ 
+    ViewData["activeLink"] = "Home";
+}
+@section Links{
+    <link href="~/css/index/style.css" rel="stylesheet" />
+}
+<!-- Slider Section Start -->
+<section class="slider-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0">
+                <ul class="slider">
+                    @foreach (var item in Model.sliders)
+                    {
+                        <li class="active-slide slide" style="background-image: url(@Url.Content($"~/image/{item.Image}"));">
+                            <div class="slider-text">
+                                <div class="slider-logo">
+                                    <img src="~/image/h1-slider-img-1.png" alt="">
+                                </div>
+                                <h1>@item.Header</h1>
+                                <div class="slider-hr">
+                                    <img src="~/image/slider-separator-img.png" alt="">
+                                </div>
+                                <p>@item.Description</p>
+                                <div class="slider-link">
+                                    <a href="product.html">shop here</a>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div class="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Slider Section End -->
+<div style="clear: both;"></div>
+<!-- Svg Section Start -->
+<section class="svg-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xl-4">
+                <div class="svg d-flex">
+                    <div class="svg-text">
+                        <h6 class="text-right">the perfect coffee</h6>
+                        <p class="text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                    <div class="svg-icon ml-4">
+                        <img src="~/image/h3-custom-icon-1.png" alt="">
+                    </div>
+                </div>
+                <div class="svg d-flex my-4">
+                    <div class="svg-text">
+                        <h6 class="text-right">the moka pot</h6>
+                        <p class="text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                    <div class="svg-icon ml-4">
+                        <img src="~/image/h3-custom-icon-3.png" alt="">
+                    </div>
+                </div>
+                <div class="svg d-flex">
+                    <div class="svg-text">
+                        <h6 class="text-right">supreme beans</h6>
+                        <p class="text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                    <div class="svg-icon ml-4">
+                        <img src="~/image/h3-custom-icon-5.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-4">
+                <div class="svg-img">
+                    <img src="~/image/h3-img-1.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-4">
+                <div class="svg d-flex">
+                    <div class="svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-2.png" alt="">
+                    </div>
+                    <div class="svg-text">
+                        <h6 class="text-left">the coffee machine</h6>
+                        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="svg d-flex my-4">
+                    <div class="svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-2.png" alt="">
+                    </div>
+                    <div class="svg-text">
+                        <h6 class="text-left">french press</h6>
+                        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="svg d-flex">
+                    <div class="svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-2.png" alt="">
+                    </div>
+                    <div class="svg-text">
+                        <h6 class="text-left">coffee to go</h6>
+                        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="responsive-svg-img d-none">
+                    <img src="~/image/h3-img-1.png" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div class="responsive-svg mb-4 d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-1.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>the perfect cup</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="responsive-svg mb-4 d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-3.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>the moka pot</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="responsive-svg mb-4 d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-5.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>supreme beans</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="responsive-svg mb-4 d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-2.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>the coffee machine</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="responsive-svg mb-4 d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-4.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>french press</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+                <div class="responsive-svg d-none">
+                    <div class="responsive-svg-icon mr-4">
+                        <img src="~/image/h3-custom-icon-2.png" alt="">
+                    </div>
+                    <div class="responsive-svg-text">
+                        <h6>coffee to go</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incid iduntus ut</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Svg Section End -->
+<div style="clear: both;"></div>
+<!-- Paralel Section Start -->
+<section class="paralel-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="paralel-text">
+                    <h1>COFFEE PRODUCTS</h1>
+                    <div class="paralel-hr">
+                        <img src="~/image/slider-separator-img.png" alt="">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    <div class="paralel-link">
+                        <a href="/Product/Index">view more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Paralel Section End -->
+<div style="clear: both;"></div>
+<!-- Menu Section Start -->
+<section class="menu-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="menu-title">
+                    <h1>EXPLORE OUR MENU</h1>
+                    <div class="title-hr">
+                        <img src="~/image/title-separator.png" alt="">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                </div>
+            </div>
+            @foreach (var item in Model.coldMenus.Take(5))
+            {
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="menu-item d-flex align-items-center">
+                        <div class="menu-img">
+                            <img src="~/image/@item.Image" alt="">
+                        </div>
+                        <div class="menu-text">
+                            <div class="menu-top d-flex align-items-center justify-content-between">
+                                <h5>@item.Name</h5>
+                                <div class="menu-hr"></div>
+                                <h6>$@item.Price</h6>
+                            </div>
+                            <div class="menu-bottom">
+                                <p>@item.Ingredients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @foreach (var item in Model.hotMenus.Take(5))
+            {
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="menu-item d-flex align-items-center">
+                        <div class="menu-img">
+                            <img src="~/image/@item.Image" alt="">
+                        </div>
+                        <div class="menu-text">
+                            <div class="menu-top d-flex align-items-center justify-content-between">
+                                <h5>@item.Name</h5>
+                                <div class="menu-hr"></div>
+                                <h6>$@item.Price</h6>
+                            </div>
+                            <div class="menu-bottom">
+                                <p>@item.Ingredients</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="menu-link">
+                    <a href="/Menu/Index">view menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Menu Section End -->
+<div style="clear: both;"></div>
+<!-- Opening Hours Section Start -->
+<section class="open-section">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+                <div class="open-logo d-flex justify-content-center">
+                    <img src="~/image/h3-img-6.png" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-0">
+                <div class="open-text">
+                    <h3>OPENING HOURS &<br>RESERVATIONS</h3>
+                    <div class="open d-flex justify-content-around">
+                        <div class="open-left">
+                            <h6>Monday – Friday // 10:00 – 12:00</h6>
+                            <h6>Saturday // 10:00 – 01:00</h6>
+                            <h6>Sunday // CLOSED</h6>
+                        </div>
+                        <div class="open-right">
+                            <h5>Reservation numbers:</h5>
+                            <h6><a href="tel:+458-874-36-21">+458-874-36-21</a></h6>
+                            <h6><a href="tel:+458-471-56-36">+458-471-56-36</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Opening Hours Section End -->
+<div style="clear: both;"></div>
+<!-- Brand Section Start -->
+<section class="brand-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="brand-slider">
+                    @foreach (var item in Model.brands)
+                    {
+                        <div class="d-flex justify-content-center">
+                            <img src="~/image/@item.Image" alt="">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Brand Section End -->
+@section Scripts{ 
+    <script src="~/js/index/main.js"></script>
+}

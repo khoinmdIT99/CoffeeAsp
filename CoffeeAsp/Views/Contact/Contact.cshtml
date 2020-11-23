@@ -1,0 +1,83 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Contact";
+    ViewData["activeLink"] = "About";
+}
+@section Links{ 
+    <link href="~/css/contactUs/style.css" rel="stylesheet" />
+}
+
+@section Title{ 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="head-title">
+                    <h1>contact us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div style="clear: both;"></div>
+<!-- Contact Section Start -->
+<section class="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="contact-text">
+                    <h3>get in touch</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+                    <p class="d-flex align-items-center mt-4"><i class="fas fa-circle"></i>Duis aute irure dolor</p>
+                    <p class="d-flex align-items-center"><i class="fas fa-circle"></i>In reprehenderit in</p>
+                    <p class="d-flex align-items-center"><i class="fas fa-circle"></i>Voluptate velit esse</p>
+                    <p class="d-flex align-items-center mb-4"><i class="fas fa-circle"></i>Illum dolore eu fugiat nulla pariatur.</p>
+                    <div class="contact-icon">
+                        <a class="pl-0" href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tumblr"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <form method="post" asp-action="Contact">
+                    <div class="contact-input">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <input class="input-name" asp-for="Name" type="text" placeholder="Your Name">
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                                <input class="input-email" asp-for="Email" type="text" placeholder="Your Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <input class="input-subject" type="text" asp-for="Subject" placeholder="Subject">
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                        <br>
+                        <textarea asp-for="Content" cols="30" placeholder="Message here..." rows="10"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                        <br>
+                        <button type="submit" href="#">send message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Section End -->
+<div style="clear: both;"></div>
+<!-- Map Section Start -->
+<section class="map-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="p-0 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12154.65596026328!2d49.8437789!3d40.3941391!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1c7f89406ce781e7!2sCompar%20Academy!5e0!3m2!1sru!2s!4v1594303288779!5m2!1sru!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Map Section End -->
+@section Scripts{ 
+    <script src="~/js/contactUs/main.js"></script>
+}

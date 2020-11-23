@@ -1,0 +1,62 @@
+﻿    @model IEnumerable<Sliders>
+@{
+    ViewData["Title"] = "Index";
+    ViewData["activeTab"] = "Slider";
+    int allSlideCount = (int)ViewData["allSliderCount"];
+    int activePage = (int)ViewData["activePage"];
+    int allPageCount = (int)(Math.Ceiling(((decimal)allSlideCount / 3)));
+}
+
+<a asp-action="Create" asp-area="Admin" asp-controller="Slider" class="btn btn-block btn-lg btn-primary text-capitalize">create</a>
+<table class="w-100 table table-bordered table-striped table-hover">
+    <thead class="text-center">
+        <tr>
+            <th></th>
+            <th>Image</th>
+            <th>Header</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="/Admin/Slider/Detail/@item.Id" class="btn btn-success">
+                        <i class="material-icons">remove_red_eye</i>
+                    </a>
+                    <a href="/Admin/Slider/Edit/@item.Id" class="btn btn-warning">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <a href="/Admin/Slider/Delete/@item.Id" class="btn btn-danger">
+                        <i class="material-icons">delete</i>
+                    </a>
+                </td>
+                <td><img src="~/image/@(item.Image)" width="100" alt="Alternate Text" /></td>
+                <td>@item.Header</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example" style="margin: auto;">
+    <ul class="pagination">
+        <li class="page-item @(activePage == 1 ? "d-none" : "")">
+            <a class="page-link" href="/Admin/Slider/Index?page=@(activePage-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        @for (int i = 1; i <= allPageCount; i++)
+        {
+            <li class="page-item @(activePage == i ? "active" : "")"><a class="page-link" href="/Admin/Slider/Index?page=@i">@i</a></li>
+        }
+        <li class="page-item @(activePage == allPageCount ? "d-none" : "")">
+            <a class="page-link" href="/Admin/Slider/Index?page=@(activePage+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

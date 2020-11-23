@@ -1,0 +1,52 @@
+﻿@model Products
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["activeTab"] = "Product";
+}
+
+<form method="post" class="w-100" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Current Image</label>
+        <br />
+        <img src="~/image/@Model.Image" width="300" alt="" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input type="number" asp-for="Price" class="form-control" min="0" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HasDiscount"></label>
+        <input type="checkbox" checked onclick="check()"  value="@true" id="hasDiscount" asp-for="HasDiscount" />
+        <span asp-validation-for="HasDiscount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DiscountPrice"></label>
+        <input type="number" min="0" step="0.01" asp-for="DiscountPrice" class="form-control" id="discountPrice" />
+        <span class="text-danger" asp-validation-for="DiscountPrice"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" accept="image/" class="form-control" />
+        <span class="text-danger" asp-validation-for="Photo"></span>
+    </div>
+    <input type="submit" class="btn btn-lg btn-block btn-primary " value="Update" />
+</form>
+
+<script>
+    function check() {
+        var hasDiscount = document.getElementById("hasDiscount");
+        var discountPrice = document.getElementById("discountPrice");
+        if (hasDiscount.checked) {
+            discountPrice.classList.remove("d-none");
+        }
+        else {
+            discountPrice.classList.add("d-none");
+        }
+    }
+</script>

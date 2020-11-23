@@ -1,0 +1,38 @@
+﻿@model Products
+@section Links{
+    <link href="~/css/singleProduct/style.css" rel="stylesheet" />
+}
+@{
+    ViewData["Title"] = "Detail";
+    ViewData["activeLink"] = "Shop";
+}
+<div style="clear: both;"></div>
+<!-- Product Detail Section Start -->
+<section class="detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="detail-img">
+                    <img src="~/image/@Model.Image" alt=""> 
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="detail-text">
+                    <h1>@Model.Name</h1>
+                    <span class="span-1 @(Model.HasDiscount == true ? "through" : "")">$@Model.Price</span>
+                    <span class="span-2 @(Model.HasDiscount == false ? "d-none" : "")">$@Model.DiscountPrice</span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, dignissimos obcaecati placeat incidunt ea mollitia. Tempore magni vitae deserunt recusandae molestias ducimus tenetur, praesentium modi similique repellendus excepturi, earum sint!</p>
+                    <div class="detail-input d-flex align-items-center">
+                        <input class="product-quantity-input" type="number" min="1" value="1">
+                        <a class="add-ajax-product" href="/Cart/AddSingleProduct/@Model.Id">add to cart</a>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Detail Section End -->
+@section Scripts{
+    <script src="~/js/singleProduct/main.js"></script>
+    <script src="~/js/singleProduct/addProductAjax.js"></script>
+}

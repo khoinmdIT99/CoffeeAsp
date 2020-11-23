@@ -1,0 +1,49 @@
+﻿@model Workers
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["activeTab"] = "Worker";
+}
+
+<form method="post" enctype="multipart/form-data" class="w-100">
+    <div class="form-group">
+        <label>Current Image</label>
+        <br />
+        <img src="~/image/@Model.Image" width="300" alt="" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Job"></label>
+        <input asp-for="Job" class="form-control" />
+        <span asp-validation-for="Job" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Instagram"></label>
+        <input asp-for="Instagram" class="form-control" />
+        <span asp-validation-for="Instagram" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Facebook"></label>
+        <input asp-for="Facebook" class="form-control" />
+        <span asp-validation-for="Facebook" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Twitter"></label>
+        <input asp-for="Twitter" class="form-control" />
+        <span asp-validation-for="Twitter" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tymblr"></label>
+        <input asp-for="Tymblr" class="form-control" />
+        <span asp-validation-for="Tymblr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" accept="image/" class="form-control" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-lg btn-block btn-primary" value="Update" />
+</form>

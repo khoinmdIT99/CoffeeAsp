@@ -1,0 +1,42 @@
+﻿@model AppUser
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> userManager
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["activeTab"] = "Users";
+}
+
+<h3 class="w-100 alert alert-primary text-center">User Information</h3>
+
+<dl>
+    <dt>Username</dt>
+    <dd>@Model.UserName</dd>
+    <dt>Email</dt>
+    <dd>@Model.Email</dd>
+</dl>
+
+<h3 class="w-100 alert alert-primary text-center">User Information</h3>
+
+<table class="w-100 table table-striped table-hover table-bordered">
+    <thead class="text-center">
+        <tr>
+            <th>Role</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var role in await userManager.GetRolesAsync(Model))
+        {
+            <tr>
+                <td>@role</td>
+                <td>
+                    @if (role != "Admin")
+                    {
+                        <a asp-action="Delete" asp-route-userid="@Model.Id" asp-route-role="@role" class="btn btn-danger">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

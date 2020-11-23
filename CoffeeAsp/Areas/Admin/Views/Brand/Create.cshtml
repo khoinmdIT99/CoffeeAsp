@@ -1,0 +1,16 @@
+﻿@model Brands
+@{
+    ViewData["Title"] = "Create";
+    ViewData["activeTab"] = "Brand";
+}
+
+<form method="post" class="w-100" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" class="form-control" accept="image/" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Create" class="btn btn-lg btn-block btn-primary" />
+</form>
+<a href="/Admin/Brand/Index" class="btn btn-lg btn-block btn-danger">Back</a>
+

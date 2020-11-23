@@ -1,0 +1,19 @@
+﻿@model Sliders
+@{
+    ViewData["Title"] = "Delete";
+    ViewData["activeTab"] = "Slider";
+}
+
+<form method="post" class="w-100" enctype="multipart/form-data">
+    <dl>
+        <dt>Current Image</dt>
+        <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+        <dt>Header</dt>
+        <dd>@Model.Header</dd>
+        <dt>Description</dt>
+        <dd>@Model.Description</dd>
+    </dl>
+    <input type="submit" class="btn btn-block btn-lg btn-dark text-white text-capitalize" value="Delete" />
+</form>
+<a href="/Admin/Slider/Index" class="btn btn-block btn-lg btn-danger text-capitalize">Back</a>
+

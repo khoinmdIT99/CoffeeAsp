@@ -1,0 +1,147 @@
+﻿@model AboutIndexVM
+@section Links{
+    <link href="~/css/aboutUs/style.css" rel="stylesheet" />
+}
+@{
+    ViewData["Title"] = "Index";
+    ViewData["activeLink"] = "About";
+}
+
+@section Title{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="head-title">
+                    <h1>about us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div style="clear: both;"></div>
+<!-- About Me Section Start -->
+<section class="about-me-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="about-me-img">
+                    <img src="~/image/p1-img-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <div class="about-me-text">
+                    <h2>the owner words</h2>
+                    <div class="about-hr d-flex justify-content-center">
+                        <img src="~/image/title-separator.png" alt="">
+                    </div>
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+                    <div class="signature-img d-flex justify-content-center">
+                        <img src="~/image/p1-img-2-180x60.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Me Section End -->
+<div style="clear: both;"></div>
+<!-- Gallery Section Start -->
+<section class="gallery-section">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="gallery-title">
+                    <h2>our gallery</h2>
+                    <div class="about-hr d-flex justify-content-center">
+                        <img src="~/image/title-separator.png" alt="">
+                    </div>
+                    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h5>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="gallery-slider">
+                    @foreach (var item in Model.galleries)
+                    {
+                        <a data-fancybox="gallery" href="~/image/@item.Image">
+                            <img src="~/image/@item.Image" alt="">
+                            <div class="hover-img"><i class="fas fa-search-plus"></i></div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gallery Section End -->
+<div style="clear: both;"></div>
+<!-- Counter Section Start -->
+<section class="counter-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="counter-item">
+                    <div class="count" data-target="@(Model.hotMenus.ToList().Count + Model.coldMenus.ToList().Count)">0</div>
+                    <h5>VARIETIES OF COFFEE</h5>
+                    <h6>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean</h6>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="counter-item">
+                    <div class="count" data-target="@Model.subcribes.ToList().Count">0</div>
+                    <h5>SUBCRIBES</h5>
+                    <h6>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean</h6>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="counter-item">
+                    <div class="count" data-target="@Model.products.ToList().Count">0</div>
+                    <h5>COFFEE PRODUCTS</h5>
+                    <h6>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean</h6>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+                <div class="counter-item">
+                    <div class="count" data-target="@Model.workers.ToList().Count">0</div>
+                    <h5>COFFEE WORKERS</h5>
+                    <h6>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Counter Section End -->
+<div style="clear: both;"></div>
+<!-- Worker Section Start -->
+<section class="worker-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="worker-slider">
+                    @foreach (var item in Model.workers)
+                    {
+                        <div class="worker-item">
+                            <div class="worker-img">
+                                <img src="~/image/@item.Image" alt="">
+                            </div>
+                            <h5>@item.Name</h5>
+                            <h6>@item.Job</h6>
+                            <div class="worker-icon d-flex justify-content-center">
+                                <a class="@(item.Instagram == null ? "d-none" : "" )" href="@item.Instagram"><i class="fab fa-instagram"></i></a>
+                                <a class="@(item.Twitter == null ? "d-none" : "" )" href="@item.Twitter"><i class="fab fa-twitter"></i></a>
+                                <a class="@(item.Facebook == null ? "d-none" : "" )" href="@item.Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a class="@(item.Tymblr == null ? "d-none" : "" )" href="@item.Tymblr"><i class="fab fa-tumblr"></i></a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Worker Section End -->
+
+@section Scripts{
+    <script src="~/js/aboutUs/main.js"></script>
+}
+

@@ -1,0 +1,23 @@
+﻿@model Workers
+@{
+    ViewData["Title"] = "Deatil";
+    ViewData["activeTab"] = "Worker";
+}
+
+<dl>
+    <dt>Image</dt>
+    <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Job</dt>
+    <dd>@Model.Job</dd>
+    <dt>Instagram</dt>
+    <dd>@Model.Instagram</dd>
+    <dt>Facebook</dt>
+    <dd>@Model.Facebook</dd>
+    <dt>Twitter</dt>
+    <dd>@Model.Twitter</dd>
+    <dt>Tumblr</dt>
+    <dd>@Model.Tymblr</dd>
+</dl>
+<a href="/Admin/Worker/Index" class="btn btn-lg btn-block btn-danger w-100">Back</a>

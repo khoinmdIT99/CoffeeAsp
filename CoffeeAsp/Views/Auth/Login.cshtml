@@ -1,0 +1,64 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+    ViewData["activeLink"] = "Shop";
+}
+
+@section Links{
+    <link href="~/css/login/style.css" rel="stylesheet" />
+}
+
+@section Title{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="head-title">
+                    <h1>Log in</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div style="clear: both;"></div>
+<!-- Login Section Start -->
+<section class="login-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <div class="login-item">
+                    <h1 class="text-center">login</h1>
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="Email">Email address *</label>
+                            <input class="text-input form-control" type="text" asp-for="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password">Password *</label>
+                            <input class="text-input form-control" type="password" asp-for="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <input class="input-btn" type="submit" value="LOGIN">
+                        <div class="form-group">
+                            <input type="checkbox" asp-for="RememberMe">
+                            <label class="m-0" asp-for="RememberMe">Remember Me</label>
+                            <span asp-validation-for="RememberMe" class="text-danger"></span>
+                        </div>
+                    </form>
+                    <a href="/Auth/ForgotPassword">Lost your password?</a>
+                    <br>
+                    <a asp-controller="Auth" asp-action="Resgitration">Create an account!</a>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+</section>
+<!-- Login Section End -->
+<div style="clear: both;"></div>
+
+@section Scripts{ 
+    <script src="~/js/login/main.js"></script>
+}

@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coretta - Coffee Cafe</title>
+    <link rel="icon" href="~/image/cropped-favicon-32x32.png">
+    <!-- Google Fonts Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- Plugins Link -->
+    <link rel="stylesheet" href="~/vendor/css/bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/css/slick.css">
+    <link rel="stylesheet" href="~/vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="~/vendor/css/aos.css">
+    <link rel="stylesheet" href="~/vendor/css/jquery.fancybox.css">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <!-- Css Link -->
+    @if (IsSectionDefined("Links"))
+    {
+        RenderSection("Links", required: true);
+    }
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <img src="~/image/logo-1.gif" alt="">
+    </div>
+
+    <div class="full-screen-bg"></div>
+
+    <div class="back-to-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="top-btn">
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Start -->
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    <div class="navigation-menu d-flex justify-content-between align-items-center">
+                        <div class="nav-logo">
+                            <a href="/Home/Index">
+                                <img src="~/image/logo-light.png" alt="">
+                            </a>
+                        </div>
+                        <div class="dark-nav-logo d-none">
+                            <a href="/Home/Index">
+                                <img src="~/image/logo.png" alt="">
+                            </a>
+                        </div>
+                        <div class="nav-menu d-flex align-items-center">
+                            <ul class="d-flex">
+                                <li class="nav-menu-li"><a class="nav-menu-link @(ViewData["activeLink"].ToString() == "Home" ? "active-nav-link" : "")" href="/Home/Index">home</a></li>
+                                <li class="nav-menu-li">
+                                    <a class="nav-menu-link @(ViewData["activeLink"].ToString() == "About" ? "active-nav-link" : "")">about</a>
+                                    <div class="hover-menu">
+                                        <ul>
+                                            <li><a href="/About/Index">about us</a></li>
+                                            <li><a href="/Contact/Contact">contact us</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-menu-li"><a class="nav-menu-link @(ViewData["activeLink"].ToString() == "Menu" ? "active-nav-link" : "")" href="/Menu/Index">menu</a></li>
+                                <li class="nav-menu-li">
+                                    <a class="nav-menu-link @(ViewData["activeLink"].ToString() == "Shop" ? "active-nav-link" : "")">shop</a>
+                                    <div class="hover-menu">
+                                        <ul>
+                                            <li><a href="/Product/Index">products</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a asp-action="LogOut" asp-controller="Auth">Welcome, @User.Identity.Name</a></li>
+                                                <li><a href="/Auth/ChangePassword">change password</a></li>
+                                                if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                                {
+                                                    <li><a href="/Admin/Dashboard/Index">admin dashboard</a></li>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <li><a href="/Auth/Login">my account</a></li>
+                                            }
+                                            <li><a href="/Cart/Cart">cart</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="nav-icon d-flex align-items-center">
+                                <div>
+                                    <a href="/Cart/Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <sup class="basket-count">0</sup>
+                                    </a>
+                                </div>
+                                <div class="search-btn">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="side-btn pr-0">
+                                    <i class="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="responsive-bar d-none">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="responsive-menu d-none">
+                            <ul class="resp-ul">
+                                <li class="resp-li"><a class="active-responsive-link d-flex justify-content-between align-items-center" href="/Home/Index">home<span></span></a></li>
+                                <li class="resp-li">
+                                    <a class="d-flex justify-content-between align-items-center">about<i class="fas fa-chevron-right"></i></a>
+                                    <div class="responsive-inside-menu">
+                                        <ul>
+                                            <li><a class="d-flex justify-content-between align-items-center" href="/About/Index">about us<span></span></a></li>
+                                            <li><a class="border-0 d-flex justify-content-between align-items-center" href="contactUs.html">contact us<span></span></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="resp-li"><a class="d-flex justify-content-between align-items-center" href="/Menu/Index">menu<span></span></a></li>
+                                <li class="resp-li">
+                                    <a class="resp-a border-0 d-flex justify-content-between align-items-center">shop<i class="fas fa-chevron-right"></i></a>
+                                    <div class="responsive-inside-menu">
+                                        <ul>
+                                            <li><a class="d-flex justify-content-between align-items-center" href="/Product/Index">products<span></span></a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a class="d-flex justify-content-between align-items-center" asp-controller="Auth" asp-action="LogOut">Welcome, @User.Identity.Name<span></span></a></li>
+                                                <li><a class="d-flex justify-content-between align-items-center" asp-controller="Auth" asp-action="ChangePassword">change password<span></span></a></li>
+                                                if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                                {
+                                                    <li><a class="d-flex justify-content-between align-items-center" href="/Admin/Dashboard/Index">admin dashboard<span></span></a></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li><a class="d-flex justify-content-between align-items-center" href="/Auth/Login">my account<span></span></a></li>
+                                            }
+                                            <li><a class="border-0 d-flex justify-content-between align-items-center" href="/Cart/Cart">cart<span></span></a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form method="get">
+                        <div class="search-area d-flex align-items-center">
+                            <input type="search" placeholder="search">
+                            <i class="search-close-btn fas fa-times"></i>
+                        </div>
+                    </form>
+                    <div class="side">
+                        <div class="side-close-btn">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="side-logo d-flex justify-content-center">
+                            <a href="/Home/Index">
+                                <img src="~/image/logo-light.png" alt="">
+                            </a>
+                        </div>
+                        <p class="text-center">Lorem ipsum dolor sit amet, consecteturadip iscing elit, sed do eiusmod tempor incididunt ut labore et dolore sit.</p>
+                        <h6 class="text-center"><a href="mailto:example@email.com">example@email.com</a></h6>
+                        <h6 class="text-center"><a href="tel:+369-7482-36-96">+369-7482-36-96</a></h6>
+                        <div class="side-icon d-flex justify-content-center align-items-center">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="pr-0" href="#"><i class="fab fa-tumblr"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @RenderSection("Title", required: false)
+    </header>
+    <!-- Header End -->
+    @RenderBody()
+    <div style="clear: both;"></div>
+    <!-- Footer Top Start -->
+    <footer class="footer-top-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="footer-top-logo">
+                        <a href="/Home/Index">
+                            <img src="~/image/logo-light.png" alt="">
+                        </a>
+                    </div>
+                    <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,nostrud exercitation ullamco laboris.”</p>
+                    <h5>STORES</h5>
+                    <div class="footer-top-link">
+                        <h6><a href="#">Dunsmuir Ave, Los Angeles, CA 90036, USA</a></h6>
+                        <h6><a href="#">Atkins Ave, Brooklyn, NY 11208, USA</a></h6>
+                    </div>
+                    <h5>NEWS AS FRESH AS OUR COFFEE</h5>
+                    <form method="post">
+                        <div class="footer-top-input">
+                            <input type="text" placeholder="Your E-mail Adress...">
+                            <a id="subscribe-btn">
+                                <i class="far fa-envelope"></i>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Top End -->
+    <div style="clear: both;"></div>
+    <!-- Footer Bottom Start -->
+    <footer class="footer-bottom-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="developer d-flex justify-content-center">
+                        <p>© Copyright <a href="#">Axmed Dev</a></p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="footer-nav">
+                        <ul class="d-flex justify-content-center align-items-center">
+                            <li><a href="/Home/Index">home</a></li>
+                            <li><a href="/About/Index">about</a></li>
+                            <li><a href="/Menu/Index">menu</a></li>
+                            <li><a href="/Product/Index">shop</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="footer-icon d-flex justify-content-center align-items-center">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tumblr"></i></a>
+                        <a href="#"><i class="fab fa-vimeo-v"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Bottom End -->
+    <!-- Plugins Scripts -->
+    <script src="~/vendor/js/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/vendor/js/slick.js"></script>
+    <script src="~/vendor/js/aos.js"></script>
+    <script src="~/vendor/js/jquery.fancybox.js"></script>
+    <!-- Ajax -->
+    <script>
+        if (localStorage.getItem("basket") === null) {
+            $(".basket-count").text(0);
+            localStorage.setItem("basket", JSON.stringify([]));
+        }
+        else {
+            var basketParse = JSON.parse(localStorage.getItem("basket"));
+            $(".basket-count").text(basketParse[0]);
+        }
+
+        function UpdateBasket(count) {
+            var basketParsed = JSON.parse(localStorage.getItem("basket"));
+            if (basketParsed.length >= 1) {
+                basketParsed.shift();
+            }
+            console.log(Array.isArray(basketParsed));
+            basketParsed.push(count);
+            $(".basket-count").text(basketParse[0]);
+            localStorage.setItem("basket", JSON.stringify(basketParsed));
+        }
+
+        $("#subscribe-btn").click(function (e) {
+            e.preventDefault();
+            var email = $(this).prev().val().trim();
+            var that = $(this);
+            if (email && validateEmail(email)) {
+                $.ajax({
+                    url: "/Ajax/Subscribe?email=" + email,
+                    method: "GET",
+                    success: function (res) {
+                        if (res.status == 200) {
+                            toastr["success"]("Dear " + email + " " + res.message);
+                            Toastr();
+                            $(that).prev().val("");
+                        }
+                    }
+                });
+            }
+            else {
+                alert("Please write your Email!");
+                $(this).prev().val("");
+            }
+        });
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+        function Toastr() {
+            toastr.options = {
+                "closeButton": true,
+                "positionClass": "toast-top-right",
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+    </script>
+    <!-- Ajax -->
+    <!-- Javascript Script -->
+    @if (IsSectionDefined("Scripts"))
+    {
+        RenderSection("Scripts", required: true);
+    }
+</body>
+</html>

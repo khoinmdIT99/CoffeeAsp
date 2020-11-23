@@ -1,0 +1,11 @@
+﻿@model Brands
+@{
+    ViewData["Title"] = "Detail";
+    ViewData["activeTab"] = "Brand";
+}
+
+<dl>
+    <dt>Current Image</dt>
+    <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+</dl>
+<a href="/Admin/Brand/Index" class="btn btn-lg btn-block btn-danger">Back</a>

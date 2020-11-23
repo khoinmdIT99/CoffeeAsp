@@ -1,0 +1,119 @@
+﻿@model ProductIndexVM
+@{
+    ViewData["activeLink"] = "Shop";
+    int allProductCount = (int)ViewData["allProductCount"];
+    int activePage = (int)ViewData["activePage"];
+    int allPageCount = (int)(Math.Ceiling(((decimal)allProductCount / 9)));
+}
+@section Links{
+    <link href="~/css/product/style.css" rel="stylesheet" />
+}
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Title{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="head-title">
+                    <h1>Products</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div style="clear: both;"></div>
+<!-- Product Section Start -->
+<section class="product-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    @foreach (var item in Model.products)
+                    {
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <a href="/Product/Detail/@item.Id">
+                                        <img src="~/image/@(item.Image)" alt="">
+                                        <div class="product-bg"></div>
+                                    </a>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a class="product-link add-product" href="/Cart/Add/@item.Id">add to cart</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="product-link" href="/Auth/Login">add to cart</a>
+                                    }
+                                </div>
+                                <div class="product-text">
+                                    <h5><a href="#">@item.Name</a></h5>
+                                    <div class="product-price d-flex justify-content-center align-items-center">
+                                        <span class="@(item.HasDiscount == true ? "through" : "")">$@item.Price</span>
+                                        <span class="@(item.HasDiscount == false ? "d-none" : "")">$@item.DiscountPrice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="product-pagination d-flex justify-content-center align-items-center mt-5">
+                            <a href="/Product/Index?page=1" class="@(activePage == 1 ? "d-none" : "")">
+                                <i class="fas fa-angle-double-left"></i>
+                            </a>
+                            <a href="/Product/Index?page=@(activePage-1)" class="@(activePage == 1 ? "d-none" : "")">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            @for (int i = 1; i <= allPageCount; i++)
+                            {
+                                <a href="/Product/Index?page=@i" class="@(activePage == i ? "active-pagination" : "")">@i</a>
+                            }
+                            <a href="/Product/Index?page=@(activePage+1)" class="@(activePage == allPageCount ? "d-none" : "")">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <a href="/Product/Index?page=@(allPageCount)" class="@(activePage == allPageCount ? "d-none" : "")">
+                                <i class="fas fa-angle-double-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="range-input">
+                    <h5>filter by price</h5>
+                    <form method="get">
+                        <input id="range" type="range" min="12" max="600" value="600">
+                        <div class="range-price d-flex justify-content-between align-items-center">
+                            <span>Price: <span class="from">$@Model.products.Min(m => m.Price)</span> - <span class="from-to">$@Model.products.Max(p => p.Price)</span></span>
+                            <button type="submit">filter</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="category my-5">
+                    <h5>product categories</h5>
+                    <h6><a href="#">Accessories</a></h6>
+                    <h6><a href="#">Bean Varieties</a></h6>
+                    <h6><a href="#">Coffee Cups</a></h6>
+                    <h6><a href="#">Espresso Machines</a></h6>
+                    <h6><a href="#">Fresh Coffee</a></h6>
+                    <h6><a href="#">Italian Coffee</a></h6>
+                </div>
+                <form method="get" asp-action="Search" asp-controller="Product" asp-route-search="cofee">
+                    <div class="form-group product-search d-flex align-items-center justify-content-between">
+                        <input type="text" id="productName" placeholder="search" >
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+@section Scripts{
+    <script src="~/js/product/main.js"></script>
+    <script src="~/js/product/addProductAjax.js"></script>
+}

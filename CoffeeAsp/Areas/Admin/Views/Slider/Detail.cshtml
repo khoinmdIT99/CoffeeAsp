@@ -1,0 +1,17 @@
+﻿@model Sliders
+@{
+    ViewData["Title"] = "Detail";
+    ViewData["activeTab"] = "Slider";
+}
+
+<dl>
+    <dt>Current Image</dt>
+    <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+    <dt>Header</dt>
+    <dd>@Model.Header</dd>
+    <dt>Description</dt>
+    <dd>@Model.Description</dd>
+</dl>
+<a href="/Admin/Slider/Index" class="btn btn-block btn-lg btn-danger text-capitalize">Back</a>
+
+

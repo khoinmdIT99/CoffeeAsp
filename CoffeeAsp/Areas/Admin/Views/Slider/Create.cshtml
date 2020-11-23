@@ -1,0 +1,25 @@
+﻿@model Sliders
+@{
+    ViewData["Title"] = "Create";
+    ViewData["activeTab"] = "Slider";
+}
+
+<form method="post" class="w-100" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Header"></label>
+        <input asp-for="Header" class="form-control" />
+        <span asp-validation-for="Header" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" accept="image/" class="form-control" />
+        <span asp-validation-for="Photo" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-block btn-lg btn-primary text-capitalize" value="Create" />
+</form>
+<a href="/Admin/Slider/Index" class="btn btn-block btn-lg btn-danger text-capitalize">Back</a>

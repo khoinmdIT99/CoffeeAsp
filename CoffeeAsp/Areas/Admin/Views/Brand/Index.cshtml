@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Brands>
+@{
+    ViewData["Title"] = "Index";
+    ViewData["activeTab"] = "Brand";
+    int allBrandCount = (int)ViewData["allBrandCount"];
+    int activePage = (int)ViewData["activePage"];
+    int allPageCount = (int)(Math.Ceiling(((decimal)allBrandCount / 3)));
+}
+<a asp-area="Admin" asp-controller="Brand" asp-action="Create" class="btn btn-block btn-lg btn-primary w-100 text-capitalize">create</a>
+<table class="table table-bordered table-striped table-hover w-100">
+    <thead class="text-center">
+        <tr>
+            <th></th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="/Admin/Brand/Detail/@item.Id" class="btn btn-success">
+                        <i class="material-icons">remove_red_eye</i>
+                    </a>
+                    <a href="/Admin/Brand/Edit/@item.Id" class="btn btn-warning">
+                        <i class="material-icons">edit</i>
+                    </a>
+                    <form method="post" asp-action="Delete" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete image: @item.Image')">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </form>
+                </td>
+                <td><img src="~/image/@item.Image" width="300" alt="Alternate Text" /></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation example" style="margin: auto;">
+    <ul class="pagination">
+        <li class="page-item @(activePage == 1 ? "d-none" : "")">
+            <a class="page-link" href="/Admin/Brand/Index?page=@(activePage-1)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </li>
+        @for (int i = 1; i <= allPageCount; i++)
+        {
+            <li class="page-item @(activePage == i ? "active" : "")"><a class="page-link" href="/Admin/Brand/Index?page=@i">@i</a></li>
+        }
+        <li class="page-item @(activePage == allPageCount ? "d-none" : "")">
+            <a class="page-link" href="/Admin/Brand/Index?page=@(activePage+1)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </li>
+    </ul>
+</nav>

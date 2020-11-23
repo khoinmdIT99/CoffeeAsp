@@ -1,0 +1,27 @@
+﻿@model Workers
+@{
+    ViewData["Title"] = "Delete";
+    ViewData["activeTab"] = "Worker";
+}
+
+<form method="post" class="w-100">
+    <dl>
+        <dt>Image</dt>
+        <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+        <dt>Job</dt>
+        <dd>@Model.Job</dd>
+        <dt>Instagram</dt>
+        <dd>@Model.Instagram</dd>
+        <dt>Facebook</dt>
+        <dd>@Model.Facebook</dd>
+        <dt>Twitter</dt>
+        <dd>@Model.Twitter</dd>
+        <dt>Tumblr</dt>
+        <dd>@Model.Tymblr</dd>
+    </dl>
+    <input type="submit" class="btn btn-block btn-lg btn-dark text-white text-capitalize" value="Delete" />
+</form>
+<a href="/Admin/Worker/Index" class="btn btn-block btn-lg btn-danger text-capitalize">Back</a>
+

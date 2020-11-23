@@ -1,0 +1,16 @@
+﻿@model Products
+@{
+    ViewData["Title"] = "Detail";
+    ViewData["activeTab"] = "Product";
+}
+
+<dl>
+    <dt>Image</dt>
+    <dd><img src="~/image/@Model.Image" width="300" alt="Alternate Text" /></dd>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Price</dt>
+    <dd>@Model.Price</dd>
+    <dt>Discount Price</dt>
+    <dd>@Model.DiscountPrice</dd>
+</dl>
